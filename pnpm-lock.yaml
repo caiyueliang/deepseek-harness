@@ -7141,6 +7141,8 @@ importers:
         specifier: workspace:*
         version: link:../../host/webserver
 
+  packages/custom/dsh-text-polish: {}
+
   packages/deliverables/tool-present:
     dependencies:
       '@deepseek-ai/schemastery':
