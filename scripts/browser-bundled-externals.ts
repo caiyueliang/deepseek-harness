@@ -171,6 +171,8 @@ export async function browserBundledExternals(root: string): Promise<Set<string>
   const manifests = new Map<string, Manifest>()
   for (const glob of ['packages/*/*/package.json', 'vendor/*/package.json']) {
     for (const path of globSync(glob, { cwd: root }).sort()) {
+      // Custom plugins are installed from this directory but are not workspace build targets.
+      if (path.startsWith('packages/custom/')) continue
       const absolute = resolve(root, path)
       manifests.set(absolute, readManifest(absolute))
     }
